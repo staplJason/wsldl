@@ -5,7 +5,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: setup mingw
@@ -19,14 +18,12 @@ jobs:
         x86_64-w64-mingw32-gcc -std=c99 --pedantic -Wall -Wno-implicit-function-declaration --static main.c -L./ -lshlwapi -lwslapi -o out/Launcher.exe
         find  ./res/* -maxdepth 1 -type d -printf '%f\n' > resl.txt
         xargs -a resl.txt -I{} x86_64-w64-mingw32-windres res/{}/res.rc -o res/{}.o
-        xargs -a resl.txt -I{} x86_64-w64-mingw32-gcc -std=c99 --pedantic -Wall -Wno-implicit-function-declaration --static main.c -L./ -lshlwapi -lwslapi res/{}.o -o out/{}.exe
-      
+        xargs -a resl.txt -I{} x86_64-w64-mingw32-gcc -std=c99 --pedantic -Wall -Wno-implicit-function-declaration --static main.c -L./ -lshlwapi -lwslapi res/{}.o -o out/{}.exe      
     - uses: rymndhng/release-on-push-action@master
     - name: Release
       id: release
       with:
         bump_version_scheme: minor
-
     - uses: svenstaro/upload-release-action@v2   
     - name: Upload binaries to release
       with:
