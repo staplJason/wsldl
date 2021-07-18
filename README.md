@@ -4,8 +4,7 @@ Advanced WSL Distribution Launcher / Installer
 
 ![screenshot](https://raw.githubusercontent.com/wiki/yuk7/wsldl/img/Arch_Alpine_Cent.png)
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yuk7/wsldl/Mingw-w64%20Cross%20CI?logo=GitHub&style=flat-square)](https://github.com/yuk7/wsldl/actions?query=workflow%3A%22Mingw-w64+Cross+CI%22)
-[![AppVeyor](https://img.shields.io/appveyor/ci/yuk7/wsldl.svg?logo=AppVeyor&style=flat-square)](https://ci.appveyor.com/project/yuk7/wsldl)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yuk7/wsldl/Continuous%20Integration?logo=GitHub&style=flat-square)](https://github.com/yuk7/wsldl/actions?query=workflow%3A%22Continuous-Integration%22)
 [![Github All Releases](https://img.shields.io/github/downloads/yuk7/wsldl/total.svg?style=flat-square)](https://github.com/yuk7/wsldl/releases/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![License](https://img.shields.io/github/license/yuk7/wsldl.svg?style=flat-square)
@@ -14,7 +13,7 @@ Advanced WSL Distribution Launcher / Installer
 ### [Detailed documentation is here](https://git.io/wsldl-doc)
 
 ## 💻Requirements
-* Windows 10 1709 Fall Creators Update 64bit or later.
+* Windows 10 1709 Fall Creators Update or later(x64/arm64).
 * Windows Subsystem for Linux feature is enabled.
 
 ## 📦Install with Prebuilt Packages
@@ -26,19 +25,21 @@ If you rename it, you can register with a different name.
 
 
 ## 🔧Install with any rootfs
-#### 1. [Download Launcher.exe](https://github.com/yuk7/wsldl/releases/latest)
+#### 1. [Download wsldl.exe](https://github.com/yuk7/wsldl/releases/latest)
+(wsldl.exe is x86_64, wsldl_arm64.exe is ARM64 build)
 #### 2. Rename it for distribution name to register.
 (Ex:Rename to Arch.exe if you want to use "Arch" for the Instance name)
 #### 3. Put your rootfs.tar(.gz) in same directory as exe (Installation directory)
 #### 4. Run exe to install. This process may take a few minutes.
 
 ## 🔗Use as a Launcher for already installed distribution
-#### 1. [Download Launcher.exe](https://github.com/yuk7/wsldl/releases/latest)
+#### 1. [Download wsldl.exe](https://github.com/yuk7/wsldl/releases/latest)
+(wsldl.exe is x86_64, wsldl_arm64.exe is ARM64 build)
 #### 2. Rename it for registerd instance name.
 Please check the registered instance name of the distribution with `wslconfig /l` command.
-(Ex: If the instance name is "Ubuntu-20.04", rename `Launcher.exe` to `Ubuntu-20.04.exe`)
+(Ex: If the instance name is "Ubuntu-20.04", rename `wsldl.exe` to `Ubuntu-20.04.exe`)
 #### 4. Run exe to Launch instance or configuration.
-For details, please see the help. (`{InstanceName}.exe --help`)
+For details, please see the help. (`{InstanceName}.exe help`)
 
 Note: You can distribute your distribution including wsldl exe.
 
@@ -50,32 +51,32 @@ Usage :
       - Open a new shell with your default settings.
 
     run <command line>
-      - Run the given command line in that distro. Inherit current directory.
+      - Run the given command line in that instance. Inherit current directory.
 
     runp <command line (includes windows path)>
-      - Run the path translated command line in that distro.
+      - Run the given command line in that instance after converting its path.
 
     config [setting [value]]
-      - `--default-user <user>`: Set the default user for this distro to <user>
-      - `--default-uid <uid>`: Set the default user uid for this distro to <uid>
-      - `--append-path <on|off>`: Switch of Append Windows PATH to $PATH
-      - `--mount-drive <on|off>`: Switch of Mount drives
-      - `--default-term <default|wt|flute>`: Set default terminal window
+      - `--default-user <user>`: Set the default user of this instance to <user>.
+      - `--default-uid <uid>`: Set the default user uid of this instance to <uid>.
+      - `--append-path <true|false>`: Switch of Append Windows PATH to $PATH
+      - `--mount-drive <true|false>`: Switch of Mount drives
+      - `--default-term <default|wt|flute>`: Set default type of terminal window.
 
     get [setting]
-      - `--default-uid`: Get the default user uid in this distro
-      - `--append-path`: Get on/off status of Append Windows PATH to $PATH
-      - `--mount-drive`: Get on/off status of Mount drives
-      - `--wsl-version`: Get WSL Version 1/2 for this distro
-      - `--default-term`: Get Default Terminal for this distro launcher
-      - `--lxguid`: Get WSL GUID key for this distro
+      - `--default-uid`: Get the default user uid in this instance.
+      - `--append-path`: Get true/false status of Append Windows PATH to $PATH.
+      - `--mount-drive`: Get true/false status of Mount drives.
+      - `--wsl-version`: Get the version os the WSL (1/2) of this instance.
+      - `--default-term`: Get Default Terminal type of this instance launcher.
+      - `--lxguid`: Get WSL GUID key for this instance.
 
     backup [contents]
-      - `--tgz`: Output backup.tar.gz to the current directory using tar command
-      - `--reg`: Output settings registry file to the current directory
+      - `--tar`: Output backup.tar to the current directory.
+      - `--reg`: Output settings registry file to the current directory.
 
     clean
-      - Uninstall the distro.
+      - Uninstall that instance.
 
     help
       - Print this usage message.
@@ -120,9 +121,9 @@ Usage :
 ```
 
 ## 🛠How-to-Build
-Please see [DEVELOPERS.md](https://github.com/yuk7/wsldl/blob/main/DEVELOPERS.md)
+Please see [DEVELOPERS.md](DEVELOPERS.md)
 
 ## 📄License
-[MIT](https://github.com/yuk7/wsldl/blob/main/LICENSES.md)
+[MIT](LICENSES.md)
 
-Copyright (c) 2017-2020 yuk7
+Copyright (c) 2017-2021 [yuk7](https://github.com/yuk7)
